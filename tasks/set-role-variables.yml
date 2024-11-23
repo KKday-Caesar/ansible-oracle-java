@@ -154,10 +154,14 @@
     jce_zip_folder: "UnlimitedJCEPolicyJDK{{ java_version }}"
   when: java_version == 8
 
+- name: set JCE zip file
+  set_fact:
+    jce_zip_file: "default-jce.zip"
+  when: jce_zip_file is not defined
+
 - name: set JCE download file
   set_fact:
     jce_zip_url: "http://download.oracle.com/otn-pub/java/jce/{{ java_version }}/{{ jce_zip_file }}"
-  when: jce_zip_file is defined
 
 
 #
